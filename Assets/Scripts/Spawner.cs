@@ -4,32 +4,42 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject pointsPrefab;
-    private float spawnDelay = 2f;
+    [SerializeField] private Enemy _pointsPrefab;
 
-    private Transform[] spawnPoints;
-    private int currentSpawnIndex = 1;
+    private Transform[] _spawnPoints;
+    private float _spawnDelay = 2f;
+    private int _currentSpawnIndex = 0;
 
     private void Start()
     {
-        spawnPoints = GameObject.FindGameObjectsWithTag("Spawn Points").Select(spawnPoint => spawnPoint.transform).ToArray();
-
+        FindSpawnPoints();
         StartCoroutine(SpawnCircles());
+    }
+
+    private void FindSpawnPoints()
+    {
+        _spawnPoints = new Transform[transform.childCount];
+
+        for (int i = 0; i < _spawnPoints.Length; i++)
+        {
+            _spawnPoints[i] = transform.GetChild(i);
+        }
     }
 
     private IEnumerator SpawnCircles()
     {
-        while (currentSpawnIndex < spawnPoints.Length)
+        while (_currentSpawnIndex < _spawnPoints.Length)
         {
-            SpawnCircle(spawnPoints[currentSpawnIndex]);
+            SpawnCircle(_spawnPoints[_currentSpawnIndex]);
             
-            currentSpawnIndex++;
+            _currentSpawnIndex++;
 
-            yield return new WaitForSeconds(spawnDelay);
+            yield return new WaitForSeconds(_spawnDelay);
         }
     }
+
     private void SpawnCircle(Transform spawnPoint)
     {
-        Instantiate(pointsPrefab, spawnPoint.position, spawnPoint.rotation);
+        Instantiate(_pointsPrefab, spawnPoint.position, spawnPoint.rotation);
     }
 }

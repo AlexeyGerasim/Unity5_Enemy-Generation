@@ -143,8 +143,9 @@ GameObject:
   m_Component:
   - component: {fileID: 400273444}
   - component: {fileID: 400273443}
+  - component: {fileID: 400273445}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -217,6 +218,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &400273445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400273442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f852008e07a1be499b1abdcf948aba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &405888244 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3725456154332334738, guid: 8647023135a304842bb3465de892a246, type: 3}
@@ -357,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6dd435ba1191044ac704258e23b6ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsPrefab: {fileID: 400273442}
+  _pointsPrefab: {fileID: 400273445}
 --- !u!212 &797484400
 SpriteRenderer:
   m_ObjectHideFlags: 0
